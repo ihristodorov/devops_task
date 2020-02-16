@@ -54,3 +54,13 @@ data "aws_vpc" "default" {
 
 data "aws_subnet_ids" "default" {
 	vpc_id = data.aws_vpc.default.idi
+
+
+
+resource "aws_lb" "example" {
+	name	           = "terraform-asg_example"
+	load_balancer_type = "application"
+	subnets		   = data.aws_subnet_ids.default.ids
+ }
+
+
