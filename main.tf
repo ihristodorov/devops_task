@@ -26,7 +26,7 @@ variable "server_port" {
  }
 
 resource "aws_security_group" "instance" {
-	name = terraform-example-instance"
+	name = "terraform-example-instance"
 
 	ingress {
 	 from_port   = var.server_port
@@ -55,10 +55,11 @@ resource "aws_autoscaling_group" "example" {
 
 data "aws_vpc" "default" {
 	default = true
+ }
 
 data "aws_subnet_ids" "default" {
-	vpc_id = data.aws_vpc.default.idi
-
+	vpc_id = data.aws_vpc.default.id
+ }
 
 
 resource "aws_lb" "example" {
